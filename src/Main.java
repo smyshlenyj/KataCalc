@@ -135,25 +135,13 @@ public class Main {
             int result = 0;
 
             for (int i = 0; i < inputString.length(); i++) {
+                char currentChar = inputString.charAt(i);
 
-                if (inputString.charAt(i) == '+') {
-                    result = left(inputString, i) + right(inputString, i);
-                    break;
-                }
-
-                if (inputString.charAt(i) == '-') {
-                    result = left(inputString, i) - right(inputString, i);
-                    break;
-                }
-
-                if (inputString.charAt(i) == '/') {
-                    result = left(inputString, i) / right(inputString, i);
-                    break;
-                }
-
-                if (inputString.charAt(i) == '*') {
-                    result = left(inputString, i) * right(inputString, i);
-                    break;
+                switch (currentChar) {
+                    case '+' -> result = left(inputString, i) + right(inputString, i);
+                    case '-' -> result = left(inputString, i) - right(inputString, i);
+                    case '*' -> result = left(inputString, i) * right(inputString, i);
+                    case '/' -> result = left(inputString, i) / right(inputString, i);
                 }
             }
             if (roman) System.out.println(arabicToRoman(result));
