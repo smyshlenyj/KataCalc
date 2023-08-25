@@ -17,11 +17,11 @@ public class Main {
             this.value = value;
         }
 
-        public int getValue() {
+        int getValue() {
             return value;
         }
 
-        public static List<RomanNumeral> getReverseSortedValues() {
+        static List<RomanNumeral> getReverseSortedValues() {
             return Arrays.stream(values())
                     .sorted(Comparator.comparing((RomanNumeral e) -> e.value).reversed())
                     .collect(Collectors.toList());
@@ -35,11 +35,13 @@ public class Main {
         List<RomanNumeral> romanNumerals = RomanNumeral.getReverseSortedValues();
 
         int i = 0;
-
+        int count = 0;
         while ((!romanNumeral.isEmpty()) && (i < romanNumerals.size())) {
+            if (count > 2) throw new RuntimeException("Too many roman digits in number");
             RomanNumeral symbol = romanNumerals.get(i);
             if (romanNumeral.startsWith(symbol.name())) {
                 result += symbol.getValue();
+                count++;
                 romanNumeral = romanNumeral.substring(symbol.name().length());
             } else {
                 i++;
@@ -74,7 +76,7 @@ public class Main {
 
     static String arabicToRoman(int number) {
         if ((number <= 0) || (number > 20)) {
-            throw new IllegalArgumentException(number + " is not in range (1,20]");
+            throw new IllegalArgumentException(number + " is not in range [1,20]");
         }
 
         List<RomanNumeral> romanNumerals = RomanNumeral.getReverseSortedValues();
