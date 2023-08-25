@@ -13,7 +13,7 @@ public class Main {
         XL(40), L(50), XC(90), C(100),
         CD(400), D(500), CM(900), M(1000);
 
-        private int value;
+        final int value;
 
         RomanNumeral(int value) {
             this.value = value;
@@ -60,25 +60,6 @@ public class Main {
         return result;
     }
 
-    static int left(String input, int i) throws RuntimeException {
-        String numberCandidate = input.substring(0, i).trim();
-        int temp = -1;
-
-        if (romanToArabic(numberCandidate) != -1) {
-            temp = romanToArabic(numberCandidate);
-            roman = true;
-        }
-
-        if (romanToArabic(numberCandidate) == -1) {
-            temp = Integer.parseInt(numberCandidate);
-            arabic = true;
-        }
-
-        if (temp > 0 && temp <= 10)
-            return temp;
-        else throw new RuntimeException("Number is out of allowed range");
-    }
-
     static String arabicToRoman(int number) throws IllegalArgumentException {
         if ((number <= 0) || (number > 100)) {
             throw new IllegalArgumentException(number + " is not in range [1,100]");
@@ -99,6 +80,25 @@ public class Main {
             }
         }
         return sb.toString();
+    }
+
+    static int left(String input, int i) throws RuntimeException {
+        String numberCandidate = input.substring(0, i).trim();
+        int temp = -1;
+
+        if (romanToArabic(numberCandidate) != -1) {
+            temp = romanToArabic(numberCandidate);
+            roman = true;
+        }
+
+        if (romanToArabic(numberCandidate) == -1) {
+            temp = Integer.parseInt(numberCandidate);
+            arabic = true;
+        }
+
+        if (temp > 0 && temp <= 10)
+            return temp;
+        else throw new RuntimeException("Number is out of allowed range");
     }
 
     static int right(String input, int i) throws RuntimeException {
