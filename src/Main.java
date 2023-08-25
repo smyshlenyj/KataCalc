@@ -35,13 +35,10 @@ public class Main {
         List<RomanNumeral> romanNumerals = RomanNumeral.getReverseSortedValues();
 
         int i = 0;
-        int count = 0;
         while ((!romanNumeral.isEmpty()) && (i < romanNumerals.size())) {
-            if (count > 2) throw new RuntimeException("Too many roman digits in number");
             RomanNumeral symbol = romanNumerals.get(i);
             if (romanNumeral.startsWith(symbol.name())) {
                 result += symbol.getValue();
-                count++;
                 romanNumeral = romanNumeral.substring(symbol.name().length());
             } else {
                 i++;
