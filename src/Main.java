@@ -29,6 +29,12 @@ public class Main {
     }
 
     static int romanToArabic(String input) {
+        int countDigits = 0;
+        for (int i = 1; i < input.length(); i++)
+            if (input.charAt(i) == input.charAt(0))
+                countDigits++;
+        if (countDigits > 2) throw new RuntimeException("Invalid number detected");
+
         String romanNumeral = input.toUpperCase();
         int result = 0;
 
