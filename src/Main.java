@@ -28,7 +28,7 @@ public class Main {
         }
     }
 
-    static int romanToArabic(String input) {
+    static int romanToArabic(String input) throws RuntimeException {
         int countDigits = 0;
         for (int i = 1; i < input.length(); i++)
             if (input.charAt(i) == input.charAt(0))
@@ -58,7 +58,7 @@ public class Main {
         return result;
     }
 
-    static int left(String input, int i) {
+    static int left(String input, int i) throws RuntimeException {
         String numberCandidate = input.substring(0, i).trim();
         int temp = -1;
 
@@ -77,7 +77,7 @@ public class Main {
         else throw new RuntimeException("Number is out of allowed range");
     }
 
-    static String arabicToRoman(int number) {
+    static String arabicToRoman(int number) throws IllegalArgumentException {
         if ((number <= 0) || (number > 20)) {
             throw new IllegalArgumentException(number + " is not in range [1,20]");
         }
@@ -99,7 +99,7 @@ public class Main {
         return sb.toString();
     }
 
-    static int right(String input, int i) {
+    static int right(String input, int i) throws RuntimeException {
         String numberCandidate = input.substring(i + 1).trim();
         int temp = -1;
 
@@ -123,7 +123,7 @@ public class Main {
         return countOperators == 1;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws RuntimeException {
         while (true) {
             System.out.print("Straight to the point: enter an expression:\n");
             Scanner scanner = new Scanner(System.in);
