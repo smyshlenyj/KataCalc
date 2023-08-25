@@ -135,9 +135,8 @@ public class Main {
             int result = 0;
 
             for (int i = 0; i < inputString.length(); i++) {
-                char currentChar = inputString.charAt(i);
 
-                switch (currentChar) {
+                switch (inputString.charAt(i)) {
                     case '+' -> result = left(inputString, i) + right(inputString, i);
                     case '-' -> result = left(inputString, i) - right(inputString, i);
                     case '*' -> result = left(inputString, i) * right(inputString, i);
